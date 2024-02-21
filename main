@@ -1,0 +1,74 @@
+/*********************************************************************************************
+ *   Program Name:      River Height Calculator                    Author(s): Andrew Helfenberger
+ *   ENGR 200.03                                                   Assignment: #5
+ *   Date 10-2-15 
+ *   
+ *   Function:  Calculate the height of the river during spring thaw.
+ *
+ *********************************************************************************************
+ *
+ *   Variables  |  function                |  units
+ *   --------------------------------------------------------------------------
+ *    y         | height of water in lake  |  feet
+ *    t         | time in hours            |  hours  
+ *    delta_t   | distance between points  |  hours
+ *    i         | loop variable            |
+ *********************************************************************************************/
+
+
+ /* Header Files */
+ #include <stdio.h>
+ #include <math.h>
+
+/*define statements*/
+#define FINAL_TIME 2.00
+#define NUM_POINTS 5
+
+
+ /*Start of main function*/
+ int main(void)
+ {
+    /* declorations: */
+    double y, t, delta_t, theta_1, theta_2;
+	int i;
+    char quit_char;
+    
+	/*theta_2=atan2(sqrt(1-D^2),D);
+	D=(x^2+y^2-a^2-a^2)/(2*a1*a2); 
+	*/
+    printf("                 PLASMA CUTTER\n");
+    printf("---------------------------------------------------------------\n");
+	printf("Please enter the radius of the circle [in]: \n");
+	printf("Number of points needed on the circle: \n");
+ 
+    delta_t = FINAL_TIME/(NUM_POINTS-1.0);
+	t = 0;
+	printf("                         RESULTS\n");
+	printf("---------------------------------------------------------------\n\n");
+	printf("      LINK LENGTH 1[in]: \n");
+	printf("      LINK LENGTH 2[in]: \n\n");
+	printf("           CIRCLE CUTTING PROGRAM\n");
+
+	printf("  time\t\ttheta_1[rad]\ttheta_2[rad]\n");
+	for( i = 0; i < NUM_POINTS; i++)
+	{
+		if( t < 400)
+		{
+			y = -1.452525e-7*t*t*t+6.01515e-5*t*t+0.008098*t+49.89;
+		}else{
+			y = 1.50168e-7*t*t*t - 2.54325e-4*t*t + 0.13089*t+32.18;
+		}
+
+		printf("  %4.2f\t\t%6.2f\n", t, y);
+		t +=delta_t;
+	}
+
+   /*This keeps the window open*/
+    printf("\n\nPress enter to q to quit.\n");
+	do{ 
+	   quit_char = getchar();
+	}while( quit_char != 'q' );
+
+   /*end the program*/
+   return 0;
+ }
